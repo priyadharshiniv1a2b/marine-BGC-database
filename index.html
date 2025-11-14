@@ -1,64 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Marine BGC Database</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background: white;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        img.logo {
-            width: 120px;
-            border-radius: 10px;
-        }
-        h1 {
-            margin-top: 10px;
-            color: #1a5276;
-        }
-        p {
-            font-size: 16px;
-            margin: 10px 0 20px 0;
-        }
-        .download-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #2874a6;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .container {
-            width: 95%;
-            margin: 20px auto;
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        iframe {
-            border: 1px solid #ccc;
-            width: 100%;
-            height: 600px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Marine BGC Database</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+header {
+    background: #1a5276;
+    color: white;
+    padding: 30px 20px;
+}
+header img.logo {
+    width: 120px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+header h1 {
+    margin: 10px 0;
+    font-size: 2em;
+}
+header p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.download-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 15px 10px;
+    background-color: #2874a6;
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+.download-btn:hover {
+    background-color: #1a5276;
+}
+.container {
+    width: 90%;
+    margin: 30px auto;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+iframe {
+    border: none;
+    width: 100%;
+    height: 700px;
+    border-radius: 8px;
+}
+footer {
+    background: #1a5276;
+    color: white;
+    padding: 15px;
+    margin-top: 30px;
+}
+</style>
 </head>
 <body>
 
 <header>
-    <!-- Logo -->
     <img src="logo.png" class="logo" alt="Project Logo">
-    <!-- Title -->
     <h1>Marine Microbial BGC Database</h1>
-    <p>Curated database of marine microbial biosynthetic gene clusters (BGCs), ranked by novelty score.</p>
+    <p>A curated and ranked database of marine microbial biosynthetic gene clusters (BGCs), including organism, cluster type, novelty score, habitat, and predicted compounds. Explore, search, and download the dataset below.</p>
 </header>
 
 <!-- Download buttons -->
@@ -69,6 +82,10 @@
 <div class="container">
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxABHo1mwwqSzLZOb0Sqw0ZEnnddbV4u8TCfJOR_QeWgXqH2YHcrISrdqWanQvS-NhHDwML_ecH81f/pubhtml"></iframe>
 </div>
+
+<footer>
+    Marine BGC Database | Powered by GitHub Pages
+</footer>
 
 </body>
 </html>
