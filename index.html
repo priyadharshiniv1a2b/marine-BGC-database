@@ -54,7 +54,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Table will be filled dynamically -->
+            <!-- Table rows will be loaded dynamically from CSV -->
         </tbody>
     </table>
 </div>
@@ -69,10 +69,14 @@ $(document).ready(function() {
     Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vTxABHo1mwwqSzLZOb0Sqw0ZEnnddbV4u8TCfJOR_QeWgXqH2YHcrISrdqWanQvS-NhHDwML_ecH81f/pub?output=csv", {
         download: true,
         header: true,
+        skipEmptyLines: true, // automatically skip empty rows
         complete: function(results) {
-            // Populate DataTable
+            // Filter out rows where mandatory columns are empty
+            const cleanData = results.data.filter(row => row.Organism && row.Reference);
+
+            // Initialize DataTable
             $('#bgcTable').DataTable({
-                data: results.data,
+                data: cleanData,
                 columns: [
                     { data: 'Organism' },
                     { data: 'Reference' },
@@ -89,6 +93,10 @@ $(document).ready(function() {
                 searching: true,
                 ordering: true
             });
+        },
+        error: function(err) {
+            console.error("Error loading CSV:", err);
+            alert("Failed to load CSV. Please check the CSV URL.");
         }
     });
 });
