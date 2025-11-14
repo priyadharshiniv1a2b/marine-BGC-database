@@ -4,91 +4,86 @@
 <meta charset="UTF-8">
 <title>Marine BGC Database</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f6f8;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
-    header {
-        background: #1a5276;
-        color: white;
-        padding: 30px 20px;
-    }
-    header img.logo {
-        width: 120px;
-        border-radius: 10px;
-        margin-bottom: 15px;
-    }
-    header h1 {
-        margin: 10px 0;
-        font-size: 2em;
-    }
-    header p {
-        font-size: 1.1em;
-        max-width: 700px;
-        margin: 0 auto;
-    }
-    .download-btn {
-        display: inline-block;
-        padding: 12px 25px;
-        margin: 15px 10px;
-        background-color: #2874a6;
-        color: white;
-        text-decoration: none;
-        font-size: 1em;
-        border-radius: 8px;
-        transition: background 0.3s;
-    }
-    .download-btn:hover {
-        background-color: #1a5276;
-    }
-    .container {
-        width: 90%;
-        margin: 30px auto;
-        background: white;
-        padding: 15px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    iframe {
-        border: none;
-        width: 100%;
-        height: 700px;
-        border-radius: 8px;
-    }
-    footer {
-        background: #1a5276;
-        color: white;
-        padding: 15px;
-        margin-top: 30px;
-    }
+    body { font-family: Arial, sans-serif; background: #f4f6f8; text-align: center; margin:0; padding:0; }
+    header { background: #1a5276; color: white; padding: 30px 20px; }
+    header img.logo { width:120px; background:white; padding:5px; border-radius:10px; margin-bottom:15px; }
+    header h1 { margin:10px 0; font-size:2em; }
+    header p { font-size:1.1em; max-width:700px; margin:0 auto; }
+    .container { width:90%; margin:30px auto; background:white; padding:15px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+    .download-btn { display:inline-block; padding:12px 25px; margin:15px 10px; background-color:#2874a6; color:white; text-decoration:none; font-size:1em; border-radius:8px; transition: background 0.3s; }
+    .download-btn:hover { background-color:#1a5276; }
+    footer { background:#1a5276; color:white; padding:15px; margin-top:30px; }
+    table.dataTable { width:100% !important; }
 </style>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
 </head>
 <body>
 
 <header>
-    <!-- Logo -->
     <img src="logo.png" class="logo" alt="Project Logo">
-    <!-- Title -->
     <h1>Marine Microbial BGC Database</h1>
-    <p>A curated and ranked database of marine microbial biosynthetic gene clusters (BGCs), including organism, cluster type, novelty score, habitat, and predicted compounds. Explore, search, and optionally download the dataset below.</p>
+    <p>A curated and ranked database of marine microbial biosynthetic gene clusters (BGCs). Explore, search, and optionally download the dataset below.</p>
 </header>
 
-<!-- Download buttons -->
-<a class="download-btn" href="Marine_BGC_Master.csv" target="_blank">View / Download CSV</a>
-<a class="download-btn" href="Marine_BGC_Master.xlsx" target="_blank">View / Download Excel</a>
-
-<!-- Table Preview -->
 <div class="container">
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxABHo1mwwqSzLZOb0Sqw0ZEnnddbV4u8TCfJOR_QeWgXqH2YHcrISrdqWanQvS-NhHDwML_ecH81f/pubhtml"></iframe>
+    <!-- Download button -->
+    <a class="download-btn" href="Marine_BGC_Master.csv" target="_blank">View Table / Download CSV</a>
+
+    <!-- Filterable Table -->
+    <table id="bgcTable" class="display">
+        <thead>
+            <tr>
+                <th>Organism</th>
+                <th>Reference</th>
+                <th>Similarity Score</th>
+                <th>Novelty_score</th>
+                <th>Cluster_Rank</th>
+                <th>BGC_Type</th>
+                <th>Compound(s)</th>
+                <th>Matched Organism</th>
+                <th>Habitat</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be loaded from CSV -->
+        </tbody>
+    </table>
 </div>
 
 <footer>
     Marine BGC Database | Powered by GitHub Pages
 </footer>
 
+<!-- jQuery and DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.13.6/dataRender/CSV.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#bgcTable').DataTable({
+        "ajax": "Marine_BGC_Master.csv", // Your CSV in the repo
+        "columns": [
+            { "data": "Organism" },
+            { "data": "Reference" },
+            { "data": "Similarity Score" },
+            { "data": "Novelty_score" },
+            { "data": "Cluster_Rank" },
+            { "data": "BGC_Type" },
+            { "data": "Compound(s)" },
+            { "data": "Matched Organism" },
+            { "data": "Habitat" },
+            { "data": "Source" }
+        ],
+        "paging": true,
+        "searching": true
+    });
+});
+</script>
+
 </body>
 </html>
-
