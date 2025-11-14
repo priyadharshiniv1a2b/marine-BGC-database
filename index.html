@@ -4,29 +4,34 @@
     <meta charset="UTF-8">
     <title>Marine BGC Database</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9f9f9; }
-        h1 { color: #1a5276; }
-        h2 { color: #2874a6; }
-        p { font-size: 16px; }
-        img { display: block; margin-bottom: 20px; }
-        .download-btn { 
-            display: inline-block; 
-            padding: 10px 20px; 
-            margin: 20px 10px 20px 0; 
-            background-color: #2874a6; 
-            color: white; 
-            text-decoration: none; 
-            border-radius: 5px; 
-        }
-        iframe { border: 1px solid #ccc; }
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
+        header { background: white; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        img.logo { width: 120px; border-radius: 10px; }
+        h1 { margin-top: 10px; color: #1a5276; }
+        p { font-size: 16px; margin: 10px 0 20px 0; }
+        .download-btn { display: inline-block; padding: 10px 20px; margin: 10px; background-color: #2874a6; color: white; text-decoration: none; border-radius: 5px; }
+        .container { width: 95%; margin: 20px auto; background: white; padding: 10px; border-radius: 10px; }
+        iframe { border: 1px solid #ccc; width: 100%; height: 600px; }
     </style>
 </head>
 <body>
 
+<header>
     <!-- Logo -->
-    <img src="logo.png" alt="Logo" width="150">
-
-    <!-- Title & Description -->
+    <img src="logo.png" class="logo" alt="Project Logo">
+    <!-- Title -->
     <h1>Marine Microbial BGC Database</h1>
-    <p>This is a curated database of marine microbial biosynthetic gene clusters (BGCs), ranked by novelty score. 
-    The project includes analysis of BGC type, organism, habitat, and predicted co
+    <p>Curated database of marine microbial biosynthetic gene clusters (BGCs), ranked by novelty score.</p>
+</header>
+
+<!-- Download buttons -->
+<a class="download-btn" href="Marine_BGC_Master.csv" download>Download CSV</a>
+<a class="download-btn" href="Marine_BGC_Master.xlsx" download>Download Excel</a>
+
+<!-- Table Preview -->
+<div class="container">
+    <iframe src="Marine_BGC_Master.csv"></iframe>
+</div>
+
+</body>
+</html>
