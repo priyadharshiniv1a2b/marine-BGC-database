@@ -82,7 +82,15 @@ $(document).ready(function() {
                 data: cleanData,
                 columns: [
                     { data: 'Organism' },
-                    { data: 'Reference' },
+                    { 
+                        data: 'Reference',
+                        render: function(data, type, row) {
+                            if(data) {
+                                return '<a href="https://mibig.secondarymetabolites.org/repository/'+data+'" target="_blank">'+data+'</a>';
+                            }
+                            return '';
+                        }
+                    },
                     { data: 'Similarity_Score' },
                     { data: 'Novelty_score' },
                     { data: 'Cluster_Rank' },
