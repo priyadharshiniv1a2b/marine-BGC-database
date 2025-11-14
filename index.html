@@ -19,6 +19,13 @@
 <!-- DataTables CSS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
+<!-- PapaParse (CSV parsing) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 </head>
 <body>
 
@@ -29,10 +36,8 @@
 </header>
 
 <div class="container">
-    <!-- Download button -->
-    <a class="download-btn" href="Marine_BGC_Master.csv" target="_blank">View Table / Download CSV</a>
+    <a class="download-btn" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxABHo1mwwqSzLZOb0Sqw0ZEnnddbV4u8TCfJOR_QeWgXqH2YHcrISrdqWanQvS-NhHDwML_ecH81f/pub?output=csv" target="_blank">View / Download CSV</a>
 
-    <!-- Filterable Table -->
     <table id="bgcTable" class="display">
         <thead>
             <tr>
@@ -49,7 +54,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Table rows will be loaded from CSV -->
+            <!-- Table will be filled dynamically -->
         </tbody>
     </table>
 </div>
@@ -58,29 +63,33 @@
     Marine BGC Database | Powered by GitHub Pages
 </footer>
 
-<!-- jQuery and DataTables JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/plug-ins/1.13.6/dataRender/CSV.js"></script>
-
 <script>
 $(document).ready(function() {
-    $('#bgcTable').DataTable({
-        "ajax": "Marine_BGC_Master.csv", // Your CSV in the repo
-        "columns": [
-            { "data": "Organism" },
-            { "data": "Reference" },
-            { "data": "Similarity Score" },
-            { "data": "Novelty_score" },
-            { "data": "Cluster_Rank" },
-            { "data": "BGC_Type" },
-            { "data": "Compound(s)" },
-            { "data": "Matched Organism" },
-            { "data": "Habitat" },
-            { "data": "Source" }
-        ],
-        "paging": true,
-        "searching": true
+    // Load CSV using PapaParse
+    Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vTxABHo1mwwqSzLZOb0Sqw0ZEnnddbV4u8TCfJOR_QeWgXqH2YHcrISrdqWanQvS-NhHDwML_ecH81f/pub?output=csv", {
+        download: true,
+        header: true,
+        complete: function(results) {
+            // Populate DataTable
+            $('#bgcTable').DataTable({
+                data: results.data,
+                columns: [
+                    { data: 'Organism' },
+                    { data: 'Reference' },
+                    { data: 'Similarity Score' },
+                    { data: 'Novelty_score' },
+                    { data: 'Cluster_Rank' },
+                    { data: 'BGC_Type' },
+                    { data: 'Compound(s)' },
+                    { data: 'Matched Organism' },
+                    { data: 'Habitat' },
+                    { data: 'Source' }
+                ],
+                paging: true,
+                searching: true,
+                ordering: true
+            });
+        }
     });
 });
 </script>
