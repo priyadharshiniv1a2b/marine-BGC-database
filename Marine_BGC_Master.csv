@@ -1,4 +1,4 @@
-﻿Organism,Reference,Similarity_Score ,Novelty_score,Cluster_Rank,BGC_Type,Compounds,Matched_Organism ,Habitat,Source
+﻿Organism,Reference,Similarity_Score,Novelty_score,Cluster_Rank,BGC_Type,Compounds,Matched_Organism,Habitat,Source
 Colwellia psychrerythraea 34H,BGC0001588.3,0.07,0.93,1,saccharide,exopolysaccharides,Burkholderia pseudomallei 1026b,Arctic Ocean,antiSMASH
 Colwellia psychrerythraea 34H,BGC0001589.3,0.07,0.93,2,saccharide,exopolysaccharides,Burkholderia cenocepacia J2315,Arctic Ocean,antiSMASH
 Colwellia psychrerythraea 34H,BGC0001215.5,0.08,0.92,3,NRPS,conglobatin,Streptomyces conglobatus,Arctic Ocean,antiSMASH
@@ -2237,4 +2237,5 @@ Pseudoalteromonas luteoviolacea,BGC0002135.2,1.74,-0.74,2235,NRPS,bovienimide A,
 Salinispora tropica CNB-471,BGC0001041.4,2.11,-1.11,2236,"NRPS, PKS",salinosporamide A,Salinispora tropica CNB-440,Marine Sponge,antiSMASH
 Salinispora tropica CNB-580,BGC0001006.5,2.19,-1.19,2237,"NRPS, PKS","lymphostin, neolymphostinol B, lymphostinol, neolymphostin B",Salinispora tropica CNB-440,Marine Sponge,antiSMASH
 Salinispora tropica CNB-470,BGC0000145.5,2.3,-1.3,2238,"NRPS, PKS",salinosporamide A,Salinispora tropica,Marine Sponge,antiSMASH
+
 
